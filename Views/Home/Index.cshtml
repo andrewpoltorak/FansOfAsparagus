@@ -1,4 +1,5 @@
 ﻿@model FansOfAsparagus.Models.User
+
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
 @{
@@ -64,6 +65,8 @@
             </form>
         </div>
     </div>
+    <a asp-area="" asp-controller="Profile" asp-action="Index">Profile</a>
+    <a asp-controller="Auth" asp-action="SignIn">Sign in with social networks</a>
 
     @section scripts {
         <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>

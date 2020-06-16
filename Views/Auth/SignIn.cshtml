@@ -1,0 +1,23 @@
+﻿@inject Microsoft.AspNetCore.Authentication.IAuthenticationSchemeProvider SchemeProvider
+@using Microsoft.AspNetCore.Authentication
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+    ViewData["Title"] = "SignIn";
+    Layout = "~/Views/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <h3>Login with social networks</h3>
+        <div class="btn-group" role="group">
+            @foreach (var provider in await SchemeProvider.GetRequestHandlerSchemesAsync())
+            {
+            <a class="btn btn-lg btn-default"
+               asp-route-returnUrl="@Context.Request.Query["returnUrl"]"
+               asp-route-provider="@provider.Name"
+               asp-action="SignIn"><i class="fa fa-@provider.Name.ToLower()"></i> @provider.Name</a>
+            }           
+        </div>
+    </div>
+</div>

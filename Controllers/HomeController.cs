@@ -19,9 +19,9 @@ namespace FansOfAsparagus.Controllers
             _context = context;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(User user)
         {
-            return View();
+            return View(user);
         }
 
         [HttpPost]
