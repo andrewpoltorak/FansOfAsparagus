@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 
 namespace FansOfAsparagus.Controllers
 {
@@ -17,7 +13,7 @@ namespace FansOfAsparagus.Controllers
 
         [Route("signin/{provider}")]
         public IActionResult SignIn(string provider, string returnUrl = null)
-        {
+        {            
             return Challenge(new Microsoft.AspNetCore.Authentication.AuthenticationProperties { RedirectUri = returnUrl ?? "/" }, provider);
         }
     }

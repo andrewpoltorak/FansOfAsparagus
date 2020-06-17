@@ -21,7 +21,7 @@ namespace FansOfAsparagus.Controllers
 
         public IActionResult Index(User user)
         {
-            return View(user);
+            return View((!string.IsNullOrEmpty(user.Name)) ? user : null);
         }
 
         [HttpPost]
@@ -41,8 +41,7 @@ namespace FansOfAsparagus.Controllers
                 {
                     ModelState.AddModelError("Name", "User with this email already exists and has another name");
                     return View("Index"); 
-                }
-                
+                }                
             }
             else
             {

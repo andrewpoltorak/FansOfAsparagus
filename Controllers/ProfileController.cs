@@ -16,19 +16,22 @@ namespace FansOfAsparagus.Controllers
         public IActionResult Index()
         {
             string email = "";
-
-            foreach (var claim in User.Claims)
+            User profileFB = null;
+            if (User != null)
             {
-                if (claim.Type.Contains("email"))
+                foreach (var claim in User.Claims)
                 {
-                    email = claim.Value;
-                }                
-            }
-            var profileFB = new User
-            {
-                Name = User.Identity.Name,
-                Email = email
-            };
+                    if (claim.Type.Contains("email"))
+                    {
+                        email = claim.Value;
+                    }
+                }
+                profileFB = new User
+                {
+                    Name = User.Identity.Name,
+                    Email = email
+                };
+            }            
             return RedirectToAction("Index", "Home", profileFB);
         }
     }
